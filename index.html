@@ -1,0 +1,183 @@
+To add a button that replaces the displayed facts with a new set of facts, you can modify the existing HTML and JavaScript. Below is the updated code for the `index.html` file, which includes a button to replace the facts.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Engineering Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .fact {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+        .fact h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .fact p {
+            margin: 5px 0 0;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Facts about Mechanical Engineering</h1>
+        <div id="facts-container"></div>
+        <button id="replace-facts-button">Replace Facts</button>
+    </div>
+    <script>
+        const facts = [
+            {
+                "fact": "Broad Discipline",
+                "description": "Mechanical engineering is one of the oldest and broadest engineering disciplines, encompassing areas such as mechanics, thermodynamics, materials science, structural analysis, and fluid dynamics."
+            },
+            {
+                "fact": "Design and Manufacturing",
+                "description": "Mechanical engineers are heavily involved in the design and manufacturing of various products, from small components like microchips to large systems like spacecraft."
+            },
+            {
+                "fact": "Thermodynamics",
+                "description": "A significant aspect of mechanical engineering is thermodynamics, which deals with heat transfer and energy conversion, crucial for engines, HVAC systems, and power plants."
+            },
+            {
+                "fact": "Robotics",
+                "description": "Mechanical engineers play a key role in the development of robotics, integrating mechanical systems with electronics and computer science to create automated machines."
+            },
+            {
+                "fact": "Sustainable Engineering",
+                "description": "With a growing emphasis on sustainability, mechanical engineers are increasingly focused on developing energy-efficient systems and renewable energy technologies."
+            },
+            {
+                "fact": "Career Opportunities",
+                "description": "Mechanical engineering graduates have diverse career opportunities in industries such as automotive, aerospace, manufacturing, energy, and robotics."
+            },
+            {
+                "fact": "Software Proficiency",
+                "description": "Modern mechanical engineers often use advanced software tools for computer-aided design (CAD), finite element analysis (FEA), and computational fluid dynamics (CFD)."
+            },
+            {
+                "fact": "Interdisciplinary Collaboration",
+                "description": "Mechanical engineers frequently collaborate with other engineering disciplines, such as electrical, civil, and chemical engineering, to solve complex problems."
+            },
+            {
+                "fact": "Professional Licensure",
+                "description": "In many countries, mechanical engineers can obtain professional licensure (e.g., PE in the United States), which can enhance career prospects and credibility."
+            },
+            {
+                "fact": "Continuous Learning",
+                "description": "The field of mechanical engineering is constantly evolving with new technologies and methodologies, requiring professionals to engage in lifelong learning and professional development."
+            }
+        ];
+
+        const newFacts = [
+            {
+                "fact": "Innovative Materials",
+                "description": "Mechanical engineers are at the forefront of developing innovative materials, such as composites and smart materials, that enhance product performance."
+            },
+            {
+                "fact": "Additive Manufacturing",
+                "description": "The rise of 3D printing technology has revolutionized manufacturing processes, allowing for rapid prototyping and customization."
+            },
+            {
+                "fact": "Biomechanics",
+                "description": "Mechanical engineers contribute to the field of biomechanics, designing medical devices and prosthetics that improve patient care."
+            },
+            {
+                "fact": "Energy Systems",
+                "description": "Mechanical engineers are involved in the design and optimization of energy systems, including renewable energy sources like wind and solar."
+            },
+            {
+                "fact": "Automotive Engineering",
+                "description": "The automotive industry relies heavily on mechanical engineers for the design and development of vehicles, focusing on safety, efficiency, and performance."
+            },
+            {
+                "fact": "Aerospace Engineering",
+                "description": "Mechanical engineers play a critical role in aerospace engineering, working on the design and testing of aircraft and spacecraft."
+            },
+            {
+                "fact": "Thermal Systems",
+                "description": "Thermal systems design is a key area in mechanical engineering, focusing on heating, cooling, and energy transfer processes."
+            },
+            {
+                "fact": "Manufacturing Processes",
+                "description": "Mechanical engineers are involved in optimizing manufacturing processes to improve efficiency and reduce waste."
+            },
+            {
+                "fact": "Mechatronics",
+                "description": "The integration of mechanical engineering with electronics and software, known as mechatronics, is essential for developing advanced automated systems."
+            },
+            {
+                "fact": "Project Management",
+                "description": "Mechanical engineers often take on project management roles, overseeing the development and implementation of engineering projects."
+            }
+        ];
+
+        function displayFacts(factsToDisplay) {
+            const factsContainer = document.getElementById('facts-container');
+            factsContainer.innerHTML = ''; // Clear existing facts
+            factsToDisplay.forEach(fact => {
+                const factDiv = document.createElement('div');
+                factDiv.classList.add('fact');
+                factDiv.innerHTML = `<h2>${fact.fact}</h2><p>${fact.description}</p>`;
+                factsContainer.appendChild(factDiv);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            displayFacts(facts); // Display initial facts
+
+            document.getElementById('replace-facts-button').addEventListener('click', () => {
+                displayFacts(newFacts); // Replace with new facts on button click
+            });
+        });
+    </script>
+</body>
+</html>
+```
+
+### Instructions to Run
+1. Create a file named `index.html`.
+2. Copy and paste the above code into the `index.html` file.
+3. Open `index.html` in a web browser to see the application in action.
+
+### Explanation
+- A button with the ID `replace-facts-button` is added to the HTML.
+- A new array `newFacts` is created, containing a different set of facts.
+- The `displayFacts` function is modified to accept an array of facts to display.
+- An event listener is added to the button, which calls `displayFacts(newFacts)` when clicked, replacing the current facts with the new ones.
